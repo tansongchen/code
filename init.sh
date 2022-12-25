@@ -1,6 +1,13 @@
 #!/bin/bash
 
-START_DIR="${START_DIR:-/home/coder/project}"
-mkdir -p $START_DIR
-git clone $GIT_REPO $START_DIR
-/usr/bin/entrypoint.sh --bind-addr 0.0.0.0:8080 $START_DIR
+if [ -n "$KEY" ]; then
+    mkdir ~/.ssh
+    echo "$KEY" > ~/.ssh/id_rsa
+    chmod 400 ~/.ssh/id_rsa
+    ssh-keyscan github.com >> ~/.ssh/known_hosts
+fi
+
+git clone $REPOSITORY
+cd *
+
+/usr/bin/entrypoint.sh --bind-addr 0.0.0.0:8080 --auth none .

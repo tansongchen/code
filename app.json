@@ -1,23 +1,20 @@
 {
-  "name": "code-server-heroku",
-  "description": "A code-server environment designed to run in your Heroku",
-  "repository": "https://github.com/cdr/deploy-code-server",
-  "logo": "https://avatars.githubusercontent.com/u/1375?s=200&v=4",
+  "name": "代码",
+  "description": "自建的 code-server 实例",
+  "repository": "https://github.com/tansongchen/code",
+  "logo": "https://raw.githubusercontent.com/tansongchen/code/main/code.png",
   "keywords": [
-    "node",
-    "express",
     "code-server",
-    "cloud-development",
-    "heroku-api"
+    "cloud-development"
   ],
   "env": {
-    "GIT_REPO": {
-      "description": "URL of a git repo to clone",
+    "REPOSITORY": {
+      "description": "Git 仓库的 URL",
       "required": true
     },
-    "PASSWORD": {
-      "description": "Create a password to log in to code-server with",
-      "required": true
+    "KEY": {
+      "description": "SSH 私钥",
+      "required": false
     }
   },
   "stack": "container"
